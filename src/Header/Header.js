@@ -8,7 +8,7 @@ class Header extends React.Component {
     render() {
         return(
             <header>
-                <Link to={"/"}><h1><img src={logo} alt="My Movie App logo" />My Movie App</h1></Link>
+                <Link to={"/movie"}><h1><img src={logo} alt="My Movie App logo" />My Movie App</h1></Link>
                 <Nav />
             </header>
         ); 

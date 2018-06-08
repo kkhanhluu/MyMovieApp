@@ -25,17 +25,16 @@ class Form extends React.Component {
         if (val === '') {
             document.getElementById("results").className = "noDisplay"; 
         }
-        // const key = 'f3e9f7d1677c7aa63c9ab526381eeceb'; 
-        const key = "571f0b226b3873248612fe24b9bdce4f";
+        const key = 'f3e9f7d1677c7aa63c9ab526381eeceb'; 
        
-        fetch("https://api.themoviedb.org/3/movie/550?api_key=" + key + "&language=en-US&query=" + val + "&page=1&include_adult=false")
+        fetch("https://api.themoviedb.org/3/search/movie?api_key=" + key + "&language=en-US&query=" + val + "&page=1&include_adult=false")
         .then(response => {
             if(response.status !== 200) {
                 console.log("Error: " + response.status); 
                 return;  
             }
             response.json().then(data => {
-                const results = data.results;
+                const results = data.results; 
                 this.setState({results:results}); 
             });
         })

@@ -16,22 +16,21 @@ class FormResult extends React.Component {
     render() {
         const link = 'https://image.tmdb.org/t/p/w300'; 
         return(
-            <ul id="results" onClick={this.handleClick}>
-               {this.props.results.map((element, index) => {
-                   return(
-                       <li key={index} onClick={this.handleClick}>
-                        <Link to={'/movie/${this.props.results[index].id}'}>
-                            <img src={this.props.results[index].poster_path == null? 'http://via.placeholder.com/300x450' : '${link}${this.props.result[index].poster_path}'}
-                             alt={'${this.props.results[index].title}'} className="resultPoster" />
-                             <div>
-                                <p>{this.props.results[index].title}</p>
-                                <p>{this.props.results[index].release_date}</p>
-                            </div>
-                        </Link>
-                        </li>   
-                    );    
-               })}
-               </ul>
+            <ul id="results">
+            {this.props.results.map((element, index) => {
+                return(
+                <li onClick={this.handleClick} id={index}>
+                    <Link to={'/movie/' + this.props.results[index].id}>
+                        <img src={this.props.results[index].poster_path == null? 'http://via.placeholder.com/300x450' : (link + this.props.results[index].poster_path)}
+                         alt={this.props.results[index].title} className="resultPoster" />
+                         <div>
+                            <p>{this.props.results[index].title}</p>
+                            <p>{this.props.results[index].release_date}</p>
+                        </div>
+                    </Link>
+                </li>   ); 
+            })}   
+            </ul>
         ); 
 
     }
